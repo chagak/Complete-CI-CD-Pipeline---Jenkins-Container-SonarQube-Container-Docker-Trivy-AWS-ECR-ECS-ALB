@@ -1,11 +1,11 @@
 pipeline {
     agent any
     tools {
-        nodejs "NodeJS"
+        nodejs 'NodeJS'
     }
     environment{
         SONAR_SCANNER_KEY = 'complete-cicd-02'
-        SONAR_SCANNER_HOME = tools 'SonarQubeScanner'
+        SONAR_SCANNER_HOME = tool 'SonarQubeScanner'
     }
 
 
