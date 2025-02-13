@@ -1,3 +1,8 @@
 Create dockerfile for Jenkins
 Create docker-compose.yaml file for Jenkins and Sonarqube
 Create Token in github
+Create Jenkinsfile
+    create check out stage
+    create unit test stage since this application a node js
+        install nodejs plugin
+        
