@@ -39,10 +39,7 @@ pipeline {
 
         stage('Build Docker image') {
             steps {
-                script {
-                    docker.build("${DOCKER_HUB_REPO}:latest")
-
-                } 
+                sh 'docker build -t kkouevi/action-cicd:latest .'
             }
         }
     }
