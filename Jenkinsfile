@@ -20,7 +20,7 @@ pipeline {
         }
         stage('SonarQube Analysis') {
             steps {
-                withCredentials([string(credentialsId: 'jen-git-dind', variable: 'SONAR_TOKEN')]) {
+                withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
                     // Use the SonarQube installation name defined in Jenkins configuration.
                     withSonarQubeEnv('SonarQube') {
                         sh """
