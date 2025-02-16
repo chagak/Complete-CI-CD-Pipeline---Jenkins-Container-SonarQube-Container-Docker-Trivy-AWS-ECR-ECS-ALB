@@ -5,4 +5,10 @@ Create Jenkinsfile
     create check out stage
     create unit test stage since this application a node js
         install nodejs plugin
-        
+        Set up NodeJS from the jenkins tools
+        add tools the Jenkinsfile
+install Sonarqube plugin
+    Create project in Sonarqube
+        create Token
+        in jenkins system, install Sonarqube
+        in jenkins tools install SonarQube Scanner
