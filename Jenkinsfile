@@ -39,7 +39,7 @@ pipeline {
 
         stage('Build Docker image') {
             steps {
-                sh 'docker build -t ${DOCKER_HUB_REPO}:latest .'
+                sh 'docker build -t ${DOCKER_HUB_REPO}:latest .' 
             }
         }
     }
