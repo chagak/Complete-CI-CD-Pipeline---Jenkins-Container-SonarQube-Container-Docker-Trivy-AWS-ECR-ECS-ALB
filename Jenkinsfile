@@ -39,7 +39,15 @@ pipeline {
 
         stage('Build Docker image') {
             steps {
-                sh 'docker build -t ${DOCKER_HUB_REPO}:latest .' 
+                sh "docker build -t ${DOCKER_HUB_REPO}:latest . "
+            }
+        }
+
+        stage('Trivy Scan') {
+            steps {
+            
+                sh "trivy image --scanners vuln --no-progress --format table -o trivy-report.html ${DOCKER_HUB_REPO}:latest"
+
             }
         }
     }
