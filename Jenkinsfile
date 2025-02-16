@@ -1,11 +1,11 @@
 pipeline{
     agent any
-    tools {
-        nodejs 'NodeJS'
-    }
-    environment {
-        SONAR_PROJECT_KEY
-    }
+    // tools {
+    //     nodejs 'NodeJS'
+    // }
+    // environment {
+    //     SONAR_PROJECT_KEY
+    // }
     stages {
         stage ('Checkout Code from github') {
             steps {
