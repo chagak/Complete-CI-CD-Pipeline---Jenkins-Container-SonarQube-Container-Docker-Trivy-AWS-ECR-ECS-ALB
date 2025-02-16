@@ -2,11 +2,11 @@ pipeline{
     agent any
     tools {
         nodejs 'NodeJS'
-        sonarqube 'SonarQubeScanner'
     }
-    // environment {
-    //     SONAR_PROJECT_KEY
-    // }
+    environment {
+        SONAR_PROJECT_KEY = 'sonarqube-token'
+        SONAR_SCANNER_HOME = tool'SonarQubeScanner'
+    }
     stages {
         stage ('Checkout Code from github') {
             steps {
@@ -23,24 +23,26 @@ pipeline{
             
         }
 
-//         stage ('SonarQube Analysis') {
-//             steps {
-//                 withCredentials([string(credentialsId: 'complete-cicd-02', variable: 'SONAR_TOKEN')]) {
-//                     withSonarQubeEnv (SonarQube) {
-//                         sh """
-//                         ${SONAR_SCANNER_HOME}/bin/sonar-scanner \
-//                         -Dsonar.projectkey=${SONAR_PROJECT_KEY} \
-//                         -Dsonar.sources. \
-//                         -Dsonar.host.url=http://sonar:9000 \
-//                         -Dsonar.login.${SONAR_TOKEN}
-//                         """
-//     // some block
-// }
-// }
+        stage ('SonarQube Analysis') {
+            steps {
+                withCredentials([string(credentialsId: 'complete-cicd-02', variable: 'SONAR_TOKEN')]) {
+                    withSonarQubeEnv (SonarQube) {
+                        sh """
+                            ${SONAR_SCANNER_HOME}/bin/sonar-scanner \\
+                            -Dsonar.projectKey=${SONAR_PROJECT_KEY} \\
+                            -Dsonar.sources=. \\
+                            -Dsonar.host.url=http://sonar:9000 \\
+                            -Dsonar.login=${SONAR_TOKEN}
+                            """
 
-//             }
+                       
+    // some block
+}
+}
+
+            }
             
-//         }
+        }
 
     }
 }
