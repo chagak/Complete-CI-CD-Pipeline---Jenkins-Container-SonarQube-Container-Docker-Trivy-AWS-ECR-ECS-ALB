@@ -39,7 +39,7 @@ pipeline {
 
         stage('Build Docker image') {
             steps {
-                sh 'docker build -t kkouevi/action-cicd:latest .'
+                sh 'docker build -t kkouevi/complete-cicd-02:latest .'
             }
         }
     }
