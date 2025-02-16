@@ -1,8 +1,8 @@
 pipeline{
     agent any
-    // tools {
-    //     nodejs 'NodeJS'
-    // }
+    tools {
+        nodejs 'NodeJS'
+    }
     // environment {
     //     SONAR_PROJECT_KEY
     // }
@@ -14,13 +14,13 @@ pipeline{
             }
             
         }
-        // stage ('Unit Test') {
-        //     steps {
-        //         sh 'npm install test'
+        stage ('Unit Test') {
+            steps {
+                sh 'npm install test'
 
-        //     }
+            }
             
-        // }
+        }
 
 //         stage ('SonarQube Analysis') {
 //             steps {
