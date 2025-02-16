@@ -46,8 +46,7 @@ pipeline {
         stage('Trivy Scan') {
             steps {
                 sh """
-                    trivy image --scanners vuln  ${DOCKER_HUB_REPO}:latest
-
+                trivy image --no-progress -o trivy-report.html ${DOCKER_HUB_REPO}:latest
                 """
             }
         }
