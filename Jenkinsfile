@@ -36,7 +36,7 @@ pipeline {
         }
 
 
-        stage('Unit Test') {
+        stage('Build Docker image') {
             steps {
                 sh 'docker build .'
             }
