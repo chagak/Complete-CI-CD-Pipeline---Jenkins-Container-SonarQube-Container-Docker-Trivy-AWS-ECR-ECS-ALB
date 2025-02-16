@@ -43,6 +43,3 @@ pipeline {
         }
     }
 }
-
-
-sh 'docker build .'
