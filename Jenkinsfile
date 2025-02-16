@@ -6,7 +6,7 @@ pipeline {
     environment {
         SONAR_PROJECT_KEY = 'sonarqube-token'
         SONAR_SCANNER_HOME = tool 'SonarQubeScanner'
-        DOCKER_HUB_REPO = 'kkouevi/action-cicd'
+        DOCKER_HUB_REPO = 'kkouevi/complete-cicd-02'
     }
     stages {
         stage('Checkout Code from github') {
@@ -39,7 +39,7 @@ pipeline {
 
         stage('Build Docker image') {
             steps {
-                sh 'docker build -t kkouevi/complete-cicd-02:latest .'
+                sh 'docker build -t ${DOCKER_HUB_REPO}:latest .'
             }
         }
     }
