@@ -4,9 +4,9 @@ pipeline{
         nodejs 'NodeJS'
         sonarqube 'SonarQubeScanner'
     }
-    environment {
-        SONAR_PROJECT_KEY
-    }
+    // environment {
+    //     SONAR_PROJECT_KEY
+    // }
     stages {
         stage ('Checkout Code from github') {
             steps {
