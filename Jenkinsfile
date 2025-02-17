@@ -66,6 +66,12 @@ pipeline {
                
             }
         }
-
+        // stage (Create ECS Cluster) {
+        //     steps withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+        //        sh"""
+        //         aws ecs create-cluster --cluster-name MyCluster
+        //         """
+        //     }
+        // }
     }
 }
