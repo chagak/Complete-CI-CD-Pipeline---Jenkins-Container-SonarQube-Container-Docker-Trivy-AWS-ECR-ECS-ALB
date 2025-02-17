@@ -47,9 +47,9 @@ pipeline {
 
         stage('Trivy Scan') {
             steps {
-                sh """
-                trivy image --no-progress -o trivy-report.html ${DOCKER_HUB_REPO}:latest
-                """
+                //sh "trivy image --no-progress -o trivy-report.html ${DOCKER_HUB_REPO}:latest"
+                sh "trivy image --no-progress -o trivy-report.html chaganote"
+        
             }
         }
 
