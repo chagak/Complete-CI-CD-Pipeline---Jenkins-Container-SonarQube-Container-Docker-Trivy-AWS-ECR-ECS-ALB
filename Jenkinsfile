@@ -7,6 +7,7 @@ pipeline {
         SONAR_PROJECT_KEY = 'sonarqube-token'
         SONAR_SCANNER_HOME = tool 'SonarQubeScanner'
         DOCKER_HUB_REPO = 'kkouevi/complete-cicd-02'
+
     }
     stages {
         stage('Checkout Code from github') {
@@ -39,7 +40,8 @@ pipeline {
 
         stage('Build Docker image') {
             steps {
-                sh "docker build -t ${DOCKER_HUB_REPO}:latest . "
+                //sh "docker build -t ${DOCKER_HUB_REPO}:latest . "
+                sh "docker build -t chaganote ."
             }
         }
 
@@ -47,6 +49,27 @@ pipeline {
             steps {
                 sh """
                 trivy image --no-progress -o trivy-report.html ${DOCKER_HUB_REPO}:latest
+                """
+            }
+        }
+
+
+        stage('Login to ECR') {
+            steps {
+                sh """
+                aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 871909687521.dkr.ecr.us-east-1.amazonaws.com
+
+                """
+            }
+        }
+
+        stage('Login to ECR') {
+            steps {
+                sh """
+                docker tag chaganote:latest 871909687521.dkr.ecr.us-east-1.amazonaws.com/chaganote:latest
+
+                docker push 871909687521.dkr.ecr.us-east-1.amazonaws.com/chaganote:latest
+
                 """
             }
         }
