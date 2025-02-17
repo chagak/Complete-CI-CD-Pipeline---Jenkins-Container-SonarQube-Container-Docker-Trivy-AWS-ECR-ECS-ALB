@@ -63,7 +63,7 @@ pipeline {
             }
         }
 
-        stage('Login to ECR') {
+        stage('Push Docker Image into ECR') {
             steps {
                 sh """
                 docker tag chaganote:latest 871909687521.dkr.ecr.us-east-1.amazonaws.com/chaganote:latest
