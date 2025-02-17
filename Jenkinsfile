@@ -52,26 +52,20 @@ pipeline {
         
             }
         }
-
+           
 
         stage('Login to ECR') {
             steps {
-                sh """
-                aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 871909687521.dkr.ecr.us-east-1.amazonaws.com
-
-                """
+                 withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                         sh """
+                            aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 871909687521.dkr.ecr.us-east-1.amazonaws.com
+                            docker tag chaganote:latest 871909687521.dkr.ecr.us-east-1.amazonaws.com/chaganote:latest
+                            docker push 871909687521.dkr.ecr.us-east-1.amazonaws.com/chaganote:latest
+                            """
+                }
+               
             }
         }
 
-        stage('Push Docker Image into ECR') {
-            steps {
-                sh """
-                docker tag chaganote:latest 871909687521.dkr.ecr.us-east-1.amazonaws.com/chaganote:latest
-
-                docker push 871909687521.dkr.ecr.us-east-1.amazonaws.com/chaganote:latest
-
-                """
-            }
-        }
     }
 }
