@@ -1,14 +1,14 @@
 pipeline {
     agent any
-    tools {
-        nodejs 'NodeJS'
-    }
-    environment {
-        SONAR_PROJECT_KEY = 'sonarqube-token'
-        SONAR_SCANNER_HOME = tool 'SonarQubeScanner'
-        DOCKER_HUB_REPO = 'kkouevi/complete-cicd-02'
+    // tools {
+    //     nodejs 'NodeJS'
+    // }
+    // environment {
+    //     SONAR_PROJECT_KEY = 'sonarqube-token'
+    //     SONAR_SCANNER_HOME = tool 'SonarQubeScanner'
+    //     DOCKER_HUB_REPO = 'kkouevi/complete-cicd-02'
 
-    }
+    // }
     stages {
         stage('Checkout Code from github') {
             steps {
